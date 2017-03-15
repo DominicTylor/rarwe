@@ -101,3 +101,8 @@ a.star-rating {
 .band-description-header {
   margin-bottom: 20px;
 }
+
+.form-group textarea {
+  width: 100%;
+  height: 150px;
+}

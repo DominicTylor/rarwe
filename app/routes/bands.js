@@ -46,9 +46,7 @@ export default Ember.Route.extend({
   },
 
   actions: {
-        didTransition () {
-      let band = this.modelFor('bands.band');
-
+    didTransition () {
       document.title = 'Bands - Rock & Roll';
     },
     createBand () {
