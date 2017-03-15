@@ -55,6 +55,8 @@ export default Ember.Route.extend({
       this.modelFor('bands').pushObject(band);
 
       controller.set('name', '');
+
+      this.transitionTo('bands.band.songs', band);
     }
   }
 });
