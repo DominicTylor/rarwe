@@ -20,12 +20,6 @@ export default Ember.Route.extend({
       band.get('songs').pushObject(song);
 
       controller.set('title', '');
-    },
-    updateRating (params) {
-      let song = params.item;
-      let rating = params.rating;
-
-      song.set('rating', rating);
     }
   }
 });
