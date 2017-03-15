@@ -1,5 +1,7 @@
-# rarwe
-
+# Rock and Roll with EmberJS
+  
+The application created by the book "Rock and Roll with Ember"  
+---
 This README outlines the details of collaborating on this Ember application.
 A short introduction of this app could easily go here.
 
