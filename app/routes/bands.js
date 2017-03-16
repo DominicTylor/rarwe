@@ -9,18 +9,15 @@ export default Ember.Route.extend({
     didTransition () {
       document.title = 'Bands - Rock & Roll';
     },
-    /*createBand () {
+    createBand () {
       let controller = this.get('controller');
       let name = controller.get('name');
-      let band = Band.create({
-        name
+      let band = this.store.createRecord('band', controller.getProperties('name'));
+
+      band.save().then(() => {
+        controller.set('name', '');
+        this.transitionTo('bands.band.songs', band);
       });
-
-      this.modelFor('bands').pushObject(band);
-
-      controller.set('name', '');
-
-      this.transitionTo('bands.band.songs', band);
-    }*/
+    }
   }
 });

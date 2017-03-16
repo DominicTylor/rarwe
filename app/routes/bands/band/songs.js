@@ -1,5 +1,4 @@
 import Ember from 'ember';
-import Song from '../../../models/song';
 
 export default Ember.Route.extend({
   resetController (controller) {
@@ -16,14 +15,14 @@ export default Ember.Route.extend({
       let band = this.modelFor('bands.band');
       let title = controller.get('title');
 
-      let song = Song.create({
+      let song = this.store.createRecord('song', {
         title,
         band
       });
 
-      band.get('songs').pushObject(song);
-
-      controller.set('title', '');
+      song.save().then(() => {
+        controller.set('title', '');
+      });
     }
   }
 });
