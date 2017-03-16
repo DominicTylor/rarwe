@@ -13,13 +13,4 @@ test('it renders', function(assert) {
   this.render(hbs`{{star-rating}}`);
 
   assert.equal(this.$().text().trim(), '');
-
-  // Template block usage:
-  this.render(hbs`
-    {{#star-rating}}
-      template block text
-    {{/star-rating}}
-  `);
-
-  assert.equal(this.$().text().trim(), 'template block text');
 });
