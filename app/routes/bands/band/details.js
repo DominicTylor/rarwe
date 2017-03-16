@@ -20,5 +20,10 @@ export default Ember.Route.extend({
 
       document.title = `${band.get('name')} details - Rock & Roll`;
     },
+    save () {
+      let band = this.get('controller').get('model');
+
+      return band.save();
+    }
   }
 });
