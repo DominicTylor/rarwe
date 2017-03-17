@@ -1,6 +1,10 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
+	queryParams: {
+		sortBy: 'sort',
+		searchTerm: 's',
+	},
 	title: '',
 	songCreationStarted: false,
 	isAddButtonDisabled: Ember.computed('title', function() {
@@ -8,6 +12,13 @@ export default Ember.Controller.extend({
 	}),
 	canCreateSong: Ember.computed('songCreationStarted', 'model.songs.length', function() {
 		return this.get('songCreationStarted') || this.get('model.songs.length');
+	}),
+	searchTerm: '',
+	matchingSongs: Ember.computed('model.songs.@each.title', 'searchTerm', function () {
+		let searchTerm = this.get('searchTerm').toLowerCase();
+		return this.get('model.songs').filter(song => {
+			return song.get('title').toLowerCase().indexOf(searchTerm) !== -1;
+		});
 	}),
 	sortBy: 'ratingDesc',
 	sortProperties: Ember.computed('sortBy', function(){
@@ -19,7 +30,7 @@ export default Ember.Controller.extend({
 		};
 		return options[this.get('sortBy')].split(',');
 	}),
-	sortedSongs: Ember.computed.sort('model.songs', 'sortProperties'),
+	sortedSongs: Ember.computed.sort('matchingSongs', 'sortProperties'),
 	actions: {
 		updateRating (params) {
 			let song = params.item;
@@ -35,9 +46,6 @@ export default Ember.Controller.extend({
 		},
 		enableSongCreation () {
 			this.set('songCreationStarted', true);
-		},
-		setSorting (option) {
-			this.set('sortBy', option);
 		}
 	}
 });
