@@ -20,7 +20,7 @@ function responseItemForBand(data, id = data.id) {
 function responseItemForSong(data, id = data.id) {
 	return {
 		id,
-		type: 'bands',
+		type: "songs",
 		attributes: data.attributes,
 	};
 }

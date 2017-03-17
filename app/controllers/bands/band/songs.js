@@ -14,7 +14,7 @@ export default Ember.Controller.extend({
 		return this.get('songCreationStarted') || this.get('model.songs.length');
 	}),
 	searchTerm: '',
-	matchingSongs: Ember.computed('model.songs.@each.title', 'searchTerm', function () {
+	matchingSongs: Ember.computed('model.songs.@each.title', 'searchTerm', function() {
 		let searchTerm = this.get('searchTerm').toLowerCase();
 		return this.get('model.songs').filter(song => {
 			return song.get('title').toLowerCase().indexOf(searchTerm) !== -1;

@@ -162,7 +162,7 @@ test('Sort songs in various ways', assert => {
 	andThen(() => {
 		assertCurrentURL(assert, '/bands/1/songs', 'Test /bands/1/songs');
 		assertTrimmedText(assert, '.song:first', 'Elephants', 'The first song is the highest ranked, first in the alphabet');
-		assertTrimmedText(assert, '.song:last', 'New Fang', 'The last song is the highest ranked, last in the alphabet');
+		assertTrimmedText(assert, '.song:last', 'New Fang', 'The last song is the lowest ranked, last in the alphabet');
 	});
 
 	click('button.sort-title-desc');
@@ -176,14 +176,14 @@ test('Sort songs in various ways', assert => {
 	click('button.sort-rating-asc');
 
 	andThen(() => {
-		assertCurrentURL(assert, '/bands/1/songs?sort=ratingAsk', 'Test /bands/1/songs?sort=ratingAsk');
+		assertCurrentURL(assert, '/bands/1/songs?sort=ratingAsc', 'Test /bands/1/songs?sort=ratingAsc');
 		assertTrimmedText(assert, '.song:first', 'Mind Eraser, No Chaser', 'The first song is the lowest ranked, first in the alphabet');
 		assertTrimmedText(assert, '.song:last', 'Spinning in Daffodils', 'The last song is the highest ranked, last in the alphabet');
 	});
 });
 
 test('Search songs', function(assert) {
-	server = new Pretender(function () {
+	server = new Pretender(function() {
 		httpStubs.stubBands(this, [
 			{
 				id: 1,
