@@ -37,10 +37,7 @@ export default Ember.Controller.extend({
 		return `new ${capitalize(bandName)} song`;
 	}),
 	actions: {
-		updateRating (params) {
-			let song = params.item;
-			let rating = params.rating;
-
+		updateRating (song, rating) {
 			if (song.get('rating') === rating) {
 				rating = 0;
 			}
