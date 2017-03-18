@@ -55,6 +55,11 @@
 	float: right;
 }
 
+a.star-rating {
+	color: inherit;
+	text-decoration: none;
+}
+
 .page-header a:hover {
 	text-decoration: none;
 }
