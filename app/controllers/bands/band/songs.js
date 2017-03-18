@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import {capitalize} from '../../../helpers/capitalize';
 
 export default Ember.Controller.extend({
 	queryParams: {
@@ -31,6 +32,10 @@ export default Ember.Controller.extend({
 		return options[this.get('sortBy')].split(',');
 	}),
 	sortedSongs: Ember.computed.sort('matchingSongs', 'sortProperties'),
+	newSongPlaceholder: Ember.computed('model.name', function () {
+		let bandName = this.get('model.name');
+		return `new ${capitalize(bandName)} song`;
+	}),
 	actions: {
 		updateRating (params) {
 			let song = params.item;

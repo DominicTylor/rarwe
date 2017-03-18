@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import {capitalize} from '../../../helpers/capitalize';
 
 export default Ember.Route.extend({
 	resetController (controller) {
@@ -7,8 +8,9 @@ export default Ember.Route.extend({
 	actions: {
 		didTransition () {
 			let band = this.modelFor('bands.band');
+			let name = capitalize(band.get('name'));
 
-			document.title = `${band.get('name')} songs - Rock & Roll`;
+			document.title = `${name} songs - Rock & Roll`;
 		},
 		createSong () {
 			let controller = this.get('controller');
