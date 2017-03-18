@@ -1,6 +1,6 @@
 # Rock and Roll with EmberJS
   
-The application created by the book "Rock and Roll with Ember"    
+The application created by the book "[Rock and Roll with Ember](https://balinterdi.com/rock-and-roll-with-emberjs/)"    
   
 [Link 2 play](http://rarwe.someonedev.ru/)  
   
@@ -26,7 +26,7 @@ You will need the following things properly installed on your computer.
 
 ## Running / Development
 
-* `ember serve`
+* `ember serve --proxy=http://json-api.rockandrollwithemberjs.com`
 * Visit your app at [http://localhost:4200](http://localhost:4200).
 
 ### Code Generators
