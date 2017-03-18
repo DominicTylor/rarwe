@@ -4,7 +4,6 @@ export default Ember.Route.extend({
 	model () {
 		return this.store.findAll('band');
 	},
-
 	actions: {
 		didTransition () {
 			document.title = 'Bands - Rock & Roll';
