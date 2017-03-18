@@ -12,8 +12,4 @@ export default function () {
 			duration: 500
 		})
 	);
-	this.transition(
-		this.inHelper('liquid-bind'),
-		this.use('slight-scale')
-	);
 }
