@@ -8,12 +8,9 @@ export default Ember.Controller.extend({
 	},
 	title: '',
 	songCreationStarted: false,
-	isAddButtonDisabled: Ember.computed('title', function() {
-		return Ember.isEmpty(this.get('title'));
-	}),
-	canCreateSong: Ember.computed('songCreationStarted', 'model.songs.length', function() {
-		return this.get('songCreationStarted') || this.get('model.songs.length');
-	}),
+	isAddButtonDisabled: Ember.computed.empty('title'),
+	hasSongs: Ember.computed.bool('model.songs.length'),
+	canCreateSong: Ember.computed.or('songCreationStarted', 'hasSongs'),
 	searchTerm: '',
 	matchingSongs: Ember.computed('model.songs.@each.title', 'searchTerm', function() {
 		let searchTerm = this.get('searchTerm').toLowerCase();
@@ -48,8 +45,8 @@ export default Ember.Controller.extend({
 			return song.save();
 		}*/
 		updateRating (params) {
-			let song = params.item;
-			let rating = params.rating;
+
+			let {item: song, rating} = params;
 
 			if (song.get('rating') === rating) {
 				rating = 0;
